@@ -17,16 +17,22 @@
     /* your styles go here */
     $resolution-tablet: 768px;
     $resolution-desktop: 998px;
+    $resolution-desktop-large: 1280px; 
 
+        
     @mixin for-size($size){
         @if $size == tablet {
             @media (min-width: #{$resolution-tablet}) {@content;}
         } @else if $size == desktop {
             @media (min-width: #{$resolution-desktop}) {@content;}
-        } @else if $size == smallerThanTablet {
+        } @else if $size == desktop-large {
+            @media (min-width: #{$resolution-desktop-large}) {@content;}
+        }@else if $size == smallerThanTablet {
             @media (max-width: #{$resolution-tablet}) {@content;}
         } @else if $size == smallerThanDesktop {
             @media (max-width: #{$resolution-desktop}) {@content;}
+        }@else if $size == smallerThanDesktopLarge {
+            @media (max-width: #{$resolution-desktop-large}) {@content;}
         }
     }
 
@@ -50,7 +56,7 @@
             //box-shadow: 10px 5px 5px red;
         }
 
-        @include for-size(smallerThanTablet){
+        @include for-size(smallerThanDesktopLarge){
             &:before{
                 content: "";
                 height: 100vh;
@@ -71,8 +77,8 @@
 
                 .topNav__tab__li{
                     -webkit-box-shadow: -1px 3px 13px 7px rgba(0,0,0,0.19);
--moz-box-shadow: -1px 3px 13px 7px rgba(0,0,0,0.19);
-box-shadow: -1px 3px 13px 7px rgba(0,0,0,0.19);
+                    -moz-box-shadow: -1px 3px 13px 7px rgba(0,0,0,0.19);
+                    box-shadow: -1px 3px 13px 7px rgba(0,0,0,0.19);
                 }
             }
         }
@@ -94,7 +100,7 @@ box-shadow: -1px 3px 13px 7px rgba(0,0,0,0.19);
         z-index: 200;
         padding: 0.5rem 1rem;
 
-        @include for-size(smallerThanDesktop){
+        @include for-size(smallerThanDesktopLarge){
             width: 100%;
         }
 
@@ -121,7 +127,7 @@ box-shadow: -1px 3px 13px 7px rgba(0,0,0,0.19);
         }
 
         &--burger{
-            @include for-size(desktop){
+            @include for-size(desktop-large){
                 display: none;
             }
         }

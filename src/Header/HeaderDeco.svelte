@@ -46,9 +46,14 @@
             right: 0;
         }
 
+        @include for-size(tablet){
+            max-width: 440px;
+        }
+
         @include for-size(desktop){
             width: 50%;
             max-width: 700px;
+            top: 52%;
         }
     }
 

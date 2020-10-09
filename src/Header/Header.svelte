@@ -28,18 +28,48 @@
     header{
         padding: 15rem 1rem 20rem 1rem;
         background-color: $green-cream;
+        position: relative;
+        box-sizing: content-box;
+
+        &:before{
+            content: "";
+            display: inline-block;
+            height: $titleCircleSize;
+            width: $titleCircleSize;
+            background-color: $orange;
+            border-radius: 100%;
+            position: absolute;
+            left: -100px;
+            top: 130px;
+            //left: -($titleCircleSize / 2);
+            //top: -($titleCircleSize / 2);;
+            //z-index: -5;
+        }
 
         @include for-size(tablet){
             //padding-left: calc((100% / 12) * 2);
+            padding-left: calc((100% / 12) + 1rem);
             padding-bottom: 10rem;
+
+            &:before{
+                left: 1rem;
+                top: 130px;
+            }
         }
 
         @include for-size(desktop){
-            padding-left: 50px;
+            //padding-left: 50px;
             padding-right: 50px;
+            padding-left: calc((100% / 8) + 50px);
+            /*
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             grid-template-rows: auto auto 1fr;
+            */
+
+            &:before{
+                left: 50px;
+            }
         }
     }
 
@@ -55,6 +85,7 @@
             color: $orange;
         }
 
+/*
         &:before{
             content: "";
             display: inline-block;
@@ -67,11 +98,18 @@
             top: -($titleCircleSize / 2);;
             z-index: -5;
         }
+        */
 
         @include for-size(tablet){
             color: rgba($color: #000000, $alpha: 0.0);
+            /*
             grid-column: 2/12;
             grid-row: 1/2;
+            */
+
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
 
             &--orange{
                 color: inherit;
@@ -92,7 +130,7 @@
         }
 
         @include for-size(desktop){
-            font-size: 92px;
+            font-size: 72px;
             justify-self: left;
         }
     }
@@ -102,16 +140,18 @@
         font-size: 28px;
         margin-top: 0;
         margin-bottom: 119px;
+        max-width: 420px;
 
         @include for-size(tablet){
             
         }
 
         @include for-size(desktop){
-            max-width: 420px;
+            /*
             grid-row: 2/3;
             grid-column: 2/6;
             align-self: start;
+            */
         }
     }
 
@@ -119,6 +159,7 @@
 
     }
 
+/*
     :global(header .btn--withIcon){
         @include for-size(desktop){
             grid-row: 3/4;
@@ -148,6 +189,7 @@
             }
         }
     }
+    */
 </style>
 
 <!-- markup (zero or more items) goes here -->
