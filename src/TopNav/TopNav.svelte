@@ -9,6 +9,8 @@
         menuOpen = !menuOpen;
     }
 
+
+
 </script>
 
 <style type="text/scss">
@@ -46,6 +48,33 @@
 
         &--menuOpen{
             //box-shadow: 10px 5px 5px red;
+        }
+
+        @include for-size(smallerThanTablet){
+            &:before{
+                content: "";
+                height: 100vh;
+                width: 100vw;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: black;
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            &--menuOpen{
+                &:before{
+                    opacity: 0.75;
+                    pointer-events: all;
+                }
+
+                .topNav__tab__li{
+                    -webkit-box-shadow: -1px 3px 13px 7px rgba(0,0,0,0.19);
+-moz-box-shadow: -1px 3px 13px 7px rgba(0,0,0,0.19);
+box-shadow: -1px 3px 13px 7px rgba(0,0,0,0.19);
+                }
+            }
         }
 
         @include for-size(desktop){

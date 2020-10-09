@@ -9,6 +9,7 @@
 
     $iconSize: 50px;
     $lineHeight : 1.4;
+    $btnFontSize: 16px;
 
     $orange-light: #FED386;
 
@@ -24,7 +25,8 @@
         position: relative;
         padding-left: $iconSize + 10px;
         box-sizing: border-box;
-        line-height: $lineHeight;
+        line-height: 1;
+        font-size: $btnFontSize;
 
         &:before{
             display: inherit;
@@ -37,8 +39,8 @@
             text-indent: 100%;
             overflow: hidden;
             position: absolute;
+            top: -(($iconSize - $btnFontSize) / 2);
             left: 0;
-            top: -($iconSize - $lineHeight) / 2;
             transform-origin: center;
             background-size: 42%;
             background-repeat: no-repeat;

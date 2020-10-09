@@ -34,11 +34,13 @@
         background-color: $green-cream;
         z-index: 0;
         padding: 1rem;
+        box-sizing: border-box;
         top: 100%;
 
 
         @include for-size(smallerThanDesktop){
             transform: translateY(-100%);
+            padding: 5rem 1rem 5rem 1rem;;
 
             &--open{
                 transform: translateY(0);
@@ -64,6 +66,16 @@
         list-style: none;
         padding: 0;
         margin: 0 0 4rem 0;
+
+        @include for-size(smallerThanDesktop){
+            &:after{
+                    content: "";
+                    display: block;
+                    height: 1px;
+                    width: 100%;
+                    background-color: black;
+                }
+        }
 
         @include for-size(desktop){
             display: flex;
@@ -93,6 +105,7 @@
         list-style: none;
         padding: 0;
         margin: 0;
+
 
         @include for-size(desktop){
             display: flex;

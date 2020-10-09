@@ -30,11 +30,16 @@
         background-color: $green-cream;
 
         @include for-size(tablet){
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: repeat(3, auto);
             //padding-left: calc((100% / 12) * 2);
             padding-bottom: 10rem;
+        }
+
+        @include for-size(desktop){
+            padding-left: 50px;
+            padding-right: 50px;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: auto auto 1fr;
         }
     }
 
@@ -88,6 +93,7 @@
 
         @include for-size(desktop){
             font-size: 92px;
+            justify-self: left;
         }
     }
 
@@ -98,18 +104,49 @@
         margin-bottom: 119px;
 
         @include for-size(tablet){
+            
+        }
+
+        @include for-size(desktop){
             max-width: 420px;
             grid-row: 2/3;
             grid-column: 2/6;
+            align-self: start;
         }
     }
 
-    :global(.header .btn--withIcon){
-        color: black !important;
+    @include for-size(desktop){
+
     }
 
-    :global(.header){
-        
+    :global(header .btn--withIcon){
+        @include for-size(desktop){
+            grid-row: 3/4;
+            grid-column: 2/6;
+            align-self: start;
+        }
+    }
+
+    :global(header .header__deco){
+
+        @include for-size(desktop){
+            position: relative !important;
+            width: 100% !important;
+            top: 0;
+            height: 100px;
+            //align-self : center;
+            grid-row: 2/3;
+            grid-column: 7/13;
+            padding: 0 !important;
+
+            .imgBubble{
+                position: absolute;
+            }
+
+            .imgBubble--secondary{
+                top: 100% !important;
+            }
+        }
     }
 </style>
 
@@ -124,7 +161,5 @@
         type={'search'}
     />
     
-    <!--
     <HeaderDeco/>
-    -->
 </header>

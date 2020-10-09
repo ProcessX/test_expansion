@@ -62,7 +62,7 @@
         position: absolute;
         top: 50%;
         left: -16%;
-        height: 32%;
+        //height: 32%;
         width: 32%;
     }
 </style>
