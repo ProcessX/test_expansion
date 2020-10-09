@@ -19,8 +19,12 @@
     @mixin for-size($size){
         @if $size == tablet {
             @media (min-width: #{$resolution-tablet}) {@content;}
-        } @else if $size == desktop{
+        } @else if $size == desktop {
             @media (min-width: #{$resolution-desktop}) {@content;}
+        } @else if $size == smallerThanTablet {
+            @media (max-width: #{$resolution-tablet}) {@content;}
+        } @else if $size == smallerThanDesktop {
+            @media (max-width: #{$resolution-desktop}) {@content;}
         }
     }
 
@@ -28,49 +32,84 @@
     $orange: #EA5B0C;
 
     .topNav{
+        
         display: flex;
         justify-content: space-between;
         align-items: center;
+        
         width: 100%;
         box-sizing: border-box;
-        background-color: $green-cream;
         position: fixed;
         top: 0;
         left: 0;
-        padding: 1rem;
         z-index: 1000;
 
         &--menuOpen{
             //box-shadow: 10px 5px 5px red;
         }
-    }
-
-    .topNav__logo{
-        grid-column-start: 1;
-        height: 3rem;
-        width: 3rem;
-        max-height: 3rem;
-        max-width: 3rem;
-        overflow: hidden;
-        text-indent: 100%;
-
-        background-color: gray;
-    }
-
-    .topNav__burger{
-        grid-column-start: 2;
 
         @include for-size(desktop){
-            display: none;
+            background-color: $green-cream;
+        }
+
+    }
+
+    .topNav__tab__li{
+        position: relative;
+        list-style: none;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $green-cream;
+        z-index: 200;
+        padding: 0.5rem 1rem;
+
+        @include for-size(smallerThanDesktop){
+            width: 100%;
+        }
+
+        @include for-size(desktop){
+            padding: 0.5rem 50px;
         }
     }
+
+    .topNav__tab__el{}
+
+    .topNav__tab{
+        &--logo{
+            display: inline-block;
+            height: 3rem;
+            width: 3rem;
+            max-height: 3rem;
+            max-width: 3rem;
+            overflow: hidden;
+            text-indent: 100%;
+            background-image: url('/asset/img/logo-binche.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left center;
+        }
+
+        &--burger{
+            @include for-size(desktop){
+                display: none;
+            }
+        }
+    }
+
 </style>
 
 <!-- markup (zero or more items) goes here -->
 <nav class="topNav {menuOpen ? "topNav--menuOpen" : ""}">
-    <a class="topNav__logo" href="#">Logo</a>
+    <ul class="topNav__tab__li">
+        <li class="topNav__tab__el">
+            <a class="topNav__tab topNav__tab--logo" href="#">Logo</a>
+        </li>
+        <li class="topNav__tab__el">
+            <a class="topNav__tab topNav__tab--burger" href="#" on:click={toggleBurger}>Burger</a>
+        </li>
+    </ul>
 
     <TopNavMenu menuOpen={menuOpen}/>
-
-    <a class="topNav__burger" href="#" on:click={toggleBurger}>Burger</a>
 </nav>

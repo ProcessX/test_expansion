@@ -18,6 +18,8 @@
             @media (min-width: #{$resolution-desktop}) {@content;}
         } @else if $size == smallerThanTablet {
             @media (max-width: #{$resolution-tablet}) {@content;}
+        } @else if $size == smallerThanDesktop {
+            @media (max-width: #{$resolution-desktop}) {@content;}
         }
     }
     
@@ -27,15 +29,15 @@
 
     .topNav__menu{
         position: absolute;
-        top: 0;
         left: 0;
         width: 100%;
         background-color: $green-cream;
-        z-index: -100;
+        z-index: 0;
         padding: 1rem;
         top: 100%;
 
-        @include for-size(smallerThanTablet){
+
+        @include for-size(smallerThanDesktop){
             transform: translateY(-100%);
 
             &--open{
@@ -50,7 +52,11 @@
             position: relative;
             display: flex;
             flex-direction: row-reverse;
-            padding: 0;
+            align-items: center;
+            padding: 0 50px;
+            box-sizing: border-box;
+            z-index: 1000;
+            background-color: transparent;
         }
     }
 
