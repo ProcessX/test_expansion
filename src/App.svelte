@@ -11,6 +11,7 @@
 </main>
 
 <style type="text/scss">
+
 	:global(body){
 		padding: 0;
 	}
@@ -18,5 +19,7 @@
 	main{
 		position: relative;
 	}
+
+
 
 </style>
