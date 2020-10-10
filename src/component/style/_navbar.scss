@@ -40,10 +40,10 @@ $menuAnimDuration: 0.8s;
 }
 
 .navbar__link__el{
-    @include mark-18;
+    @include mark-24;
 
     &--bold{
-        @include mark-18-bold;
+        @include mark-24-bold;
     }
 }
 
@@ -51,6 +51,22 @@ $menuAnimDuration: 0.8s;
     grid-column: 2/3;
     justify-self: end;
     z-index: 100;
+}
+
+@include for-size(smallerThanTablet){
+    //@include contentBlock;
+    .navbar__menu{
+        @include contentBlock;
+    }
+}
+
+@include for-size(tablet){
+    .navbar__menu{
+        > * {
+            max-width: calc(50%);
+            margin: auto;
+        }
+    }
 }
 
 
@@ -97,16 +113,15 @@ $menuAnimDuration: 0.8s;
     }
 
     .navbar__menu{
-        @include contentBlock;
+        //@include contentBlock;
 
         padding-top: 98px;
         padding-bottom: $paddingTablet;
-
         position: absolute;
         top: 0;
         transform: translateY(-100%);
-        //background-color: $yellow;
-        background-color: white;
+        background-color: $yellow;
+        //background-color: $red;
         width: 100%;
         max-height: 100vh;
         overflow: scroll;
@@ -134,7 +149,7 @@ $menuAnimDuration: 0.8s;
                     left: 25%;
                     width: 50%;
                     height: 1px;
-                    background-color: lightgray;
+                    background-color: $gray-light;
                 }
             }
 
@@ -151,7 +166,7 @@ $menuAnimDuration: 0.8s;
                     left: 25%;
                     width: 50%;
                     height: 1px;
-                    background-color: lightgray;
+                    background-color: $gray-light;
 
                 }
             }

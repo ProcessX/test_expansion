@@ -36,6 +36,7 @@ $orange: #EA5B0C;
 $orange-dark: #E55726;
 $yellow: #FED386;
 $turquoise: #006376;
+$red: #EF7875;
 
 
 /*-------FONTS-------------------------------*/
@@ -64,6 +65,15 @@ $turquoise: #006376;
 
 @mixin mark-18-bold{
     font-size: 18px;
+    font-weight: bold;
+}
+
+@mixin mark-24{
+    font-size: 24px;
+}
+
+@mixin mark-24-bold{
+    font-size: 24px;
     font-weight: bold;
 }
 

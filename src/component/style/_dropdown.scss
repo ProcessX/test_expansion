@@ -5,7 +5,7 @@
 }
 
 .dropdown__btn{
-    @include mark-18-bold;
+    @include mark-24-bold;
     display: flex;
     align-items: baseline;
     justify-content: flex-start;
@@ -38,7 +38,7 @@
     box-sizing: content-box;
     padding-left: 1em;
     margin-left: 2em;
-    border-left: solid 1px $green-dark;
+    border-left: solid 1px $gray-light;
     transition: max-height 0.4s;
 
     &--open{
@@ -47,7 +47,7 @@
 }
 
 .dropdown__link__el{
-    @include mark-16;
+    @include mark-18;
     padding: 1em 0;
 
 
