@@ -2,8 +2,6 @@
     // your script goes here
     import BtnIcon from "./BtnIcon.svelte";
     import HeaderDeco from "./HeaderDeco.svelte";
-
-    
 </script>
 
 <style lang="scss">

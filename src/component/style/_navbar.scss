@@ -1,7 +1,24 @@
 @import '_lib.scss';
 
 $linkIconSize: 32px;
+$logoSize: 39px;
+$burgerSize: 32px;
 $menuAnimDuration: 0.8s;
+$menuCircleTop: ($logoSize / 2) + 10px;
+$menuCircleLeftMobile: calc(100% - #{$paddingMobile} - (#{$burgerSize} / 2));
+$menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
+
+@mixin menuCirclePos{
+    clip-path: circle(0% at calc(100% - #{$paddingMobile} - (#{$burgerSize} / 2)) $menuCircleTop);
+
+    @include for-size(tablet){
+        clip-path: circle(0% at calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2)) $menuCircleTop);
+    }
+
+    @include for-size(desktop){
+        clip-path: circle(0% at calc(100% - #{$paddingDesktop} - (#{$burgerSize} / 2)) $menuCircleTop);
+    }
+}
 
 .navbar{
     @include contentBlock;
@@ -15,21 +32,22 @@ $menuAnimDuration: 0.8s;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
     background-color: $green;
     z-index: 1000;
 }
 
 .navbar__link{
 
-    color: black;
+    color: $red;
     text-decoration: none;
 
     &--logo{
         grid-column: 1/2;
         justify-self: start;
         z-index: 100;
-        height: 39px;
-        width: 39px;
+        height: $logoSize;
+        width: $logoSize;
         overflow: hidden;
         text-indent: 100%;
         background-image: url('/asset/img/logo-binche.png');
@@ -51,6 +69,18 @@ $menuAnimDuration: 0.8s;
     grid-column: 2/3;
     justify-self: end;
     z-index: 100;
+    height: $burgerSize;
+    width: $burgerSize;
+    max-height: $burgerSize;
+    max-width: $burgerSize;
+    overflow: hidden;
+    text-indent: 100%;
+    //background-color: red;
+    border: solid 1px black;
+}
+
+.navbar__menu{
+    @include menuCirclePos;
 }
 
 @include for-size(smallerThanTablet){
@@ -74,21 +104,24 @@ $menuAnimDuration: 0.8s;
     .navbar{
         &:after{
             content: "";
-            display: block;
+            //display: block;
+            display: none;
             height: 100vh;
             width: 100vw;
             position: absolute;
             top: 0;
             left: 0;
-            background-color: black;
+            background-color: $yellow;
             pointer-events: none;
-            opacity: 0;
             transition: opacity $menuAnimDuration;
+            clip-path: circle(0%);
+
         }
 
         &:before{
             content: "";
-            display: block;
+            //display: block;
+            display: none;
             height: 100%;
             width: 100%;
             position: absolute;
@@ -107,7 +140,7 @@ $menuAnimDuration: 0.8s;
             }
 
             &:after{
-                opacity: 0.8;
+                clip-path: circle(40%);
             }
         }
     }
@@ -116,20 +149,26 @@ $menuAnimDuration: 0.8s;
         //@include contentBlock;
 
         padding-top: 98px;
-        padding-bottom: $paddingTablet;
+        //padding-bottom: $paddingTablet;
         position: absolute;
         top: 0;
-        transform: translateY(-100%);
+        //transform: translateY(-100%);
         background-color: $yellow;
-        //background-color: $red;
         width: 100%;
+        height: 100vh;
         max-height: 100vh;
-        overflow: scroll;
-        transition: transform $menuAnimDuration;
+        box-sizing: border-box;
+        //overflow: scroll;
+        transition: clip-path $menuAnimDuration;
         z-index: 10;
+        pointer-events: none;
     
         &--open{
-            transform: translateY(0);
+            //transform: translateY(0);
+            pointer-events: all;
+            display: block;
+            //visibility: visible;
+            clip-path: circle(200% at 0 0);
         }
     }
 
@@ -146,10 +185,9 @@ $menuAnimDuration: 0.8s;
                     content: "";
                     position: absolute;
                     bottom: 0;
-                    left: 25%;
-                    width: 50%;
+                    width: 100%;
                     height: 1px;
-                    background-color: $gray-light;
+                    background-color: $yellow-dark;
                 }
             }
 
@@ -163,10 +201,9 @@ $menuAnimDuration: 0.8s;
                     content: "";
                     position: absolute;
                     bottom: 0;
-                    left: 25%;
-                    width: 50%;
+                    width: 100%;
                     height: 1px;
-                    background-color: $gray-light;
+                    background-color: $yellow-dark;
 
                 }
             }
@@ -213,6 +250,11 @@ $menuAnimDuration: 0.8s;
     .navbar__menu{
         display: grid;
         grid-template-columns: repeat(11, 1fr);
+        clip-path: none;
+
+        > * {
+            max-width: none;
+        }
     }
 
 
@@ -227,6 +269,10 @@ $menuAnimDuration: 0.8s;
     .navbar__link__el{
         @include aileron-13;
         margin-left: 1.5em;
+
+        .navbar__link{
+            color: black;
+        }
 
         &:nth-child(2){
             margin-left: 3rem;
@@ -243,5 +289,12 @@ $menuAnimDuration: 0.8s;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .dropdown__el{
+        margin-right: 1em;
+        &:last-child{
+            margin: 0;
+        }
     }
 }
