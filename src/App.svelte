@@ -1,16 +1,14 @@
 <script>
-	import TopNav from './TopNav/TopNav.svelte';
-	import Header from './Header/Header.svelte';
-
-	export let name;
+	import Navbar from './component/Navbar.svelte';
+	import Header from './component/Header.svelte';
 </script>
 
 <main>
-	<TopNav/>
+	<Navbar/>
 	<Header/>
 </main>
 
-<style type="text/scss">
+<style lang="scss" global>
 
 	:global(body){
 		padding: 0;
@@ -19,7 +17,5 @@
 	main{
 		position: relative;
 	}
-
-
 
 </style>

@@ -1,0 +1,14 @@
+@import '_lib.scss';
+
+.dropdown{}
+
+.dropdown__btn{}
+
+.dropdown__link__li{}
+
+.dropdown__link__el{
+    .dropdown__link{
+        color: black;
+        text-decoration: none;
+    }
+}

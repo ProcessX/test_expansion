@@ -1,0 +1,86 @@
+$contentMaxWidth: 1300px;
+
+$paddingMobile: 18px;
+$paddingTablet: 36px;
+$paddingDesktop: 50px;
+
+$resolution-tablet: 768px;
+$resolution-desktop: 998px;
+$resolution-desktop-large: 1280px; 
+        
+@mixin for-size($size){
+    @if $size == tablet {
+        @media (min-width: #{$resolution-tablet}) {@content;}
+    } @else if $size == desktop {
+        @media (min-width: #{$resolution-desktop}) {@content;}
+    } @else if $size == desktop-large {
+        @media (min-width: #{$resolution-desktop-large}) {@content;}
+    }@else if $size == smallerThanTablet {
+        @media (max-width: #{$resolution-tablet}) {@content;}
+    } @else if $size == smallerThanDesktop {
+        @media (max-width: #{$resolution-desktop}) {@content;}
+    }@else if $size == smallerThanDesktopLarge {
+        @media (max-width: #{$resolution-desktop-large}) {@content;}
+    }
+}
+
+
+/*-------COLORS-------------------------------*/
+$gray-light: #F0F0F0;
+$gray: #8D8D8D;
+$green-light: #C1DFC4;
+$green: #B7DAB9;
+
+
+/*-------FONTS-------------------------------*/
+
+@mixin mark-13{
+    font-size: 13px;
+}
+
+@mixin mark-13-bold{
+    font-size: 13px;
+    font-weight: bold;
+}
+
+@mixin aileron-13{
+    font-size: 13px;
+}
+
+@mixin aileron-13-bold{
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/*-------GLOBAL-------------------------------*/
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.btn{
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+}
+
+@mixin contentBlock{
+    padding-left: $paddingMobile;
+    padding-right: $paddingMobile;
+    box-sizing: border-box;
+
+    @include for-size(tablet){
+        padding-left: $paddingTablet;
+        padding-right: $paddingTablet;
+    }
+
+    @include for-size(desktop){
+        padding-left: $paddingDesktop;
+        padding-right: $paddingDesktop;
+    }
+}

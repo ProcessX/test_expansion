@@ -1,0 +1,7 @@
+@import '_lib.scss';
+
+.intro{
+    @include contentBlock;
+
+    background-color: $green-light;
+}
