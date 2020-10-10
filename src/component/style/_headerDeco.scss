@@ -1,0 +1,60 @@
+@import '_lib.scss';
+
+.header__deco{
+    width: 100%;
+    max-width: 300px;
+    position: absolute;
+    bottom: -150px;
+    right: $paddingMobile;
+
+}
+
+.bubble{
+    content: "";
+    width: 15%;
+    height: 15%;
+    max-width: 15%;
+    max-height: 15%;
+    text-indent: 100%;
+    overflow: hidden;
+    border-radius: 100%;
+    background-color: $orange;
+    position: absolute;
+    right: -5%;
+    top: 55%;
+}
+
+.bubbleImg{
+    max-width: 100%;
+
+    &--secondary{
+        max-width: 33%;
+        position: absolute;
+        top: 50%;
+        left: -16%;
+    }
+}
+
+@include for-size(tablet){
+    .header__deco{
+        bottom: -150px;
+        max-width: 420px;
+        right: $paddingTablet;
+    }
+}
+
+@include for-size(desktop){
+    .header__deco{
+        bottom: -150px;
+        width: 50%;
+        max-width: 720px;
+        right: $paddingDesktop;
+    }
+}
+
+@include for-size(desktop-large){
+    .header__deco{
+        bottom: -200px;
+        right: $paddingDesktop;
+    }
+}

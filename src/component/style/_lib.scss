@@ -28,8 +28,14 @@ $resolution-desktop-large: 1280px;
 /*-------COLORS-------------------------------*/
 $gray-light: #F0F0F0;
 $gray: #8D8D8D;
-$green-light: #C1DFC4;
-$green: #B7DAB9;
+$green: #C1DFC4;
+$green-dark: #B7DAB9;
+$green-light: #ddf0df;
+$orange-light: #E55726;
+$orange: #EA5B0C;
+$orange-dark: #E55726;
+$yellow: #FED386;
+$turquoise: #006376;
 
 
 /*-------FONTS-------------------------------*/
@@ -43,6 +49,42 @@ $green: #B7DAB9;
     font-weight: bold;
 }
 
+@mixin mark-16{
+    font-size: 16px;
+}
+
+@mixin mark-16-bold{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+@mixin mark-18{
+    font-size: 18px;
+}
+
+@mixin mark-18-bold{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@mixin mark-32{
+    font-size: 32px;
+}
+
+@mixin mark-32-bold {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+@mixin mark-68{
+    font-size: 68px;
+}
+
+@mixin mark-68-bold {
+    font-size: 68px;
+    font-weight: bold;
+}
+
 @mixin aileron-13{
     font-size: 13px;
 }
@@ -51,6 +93,8 @@ $green: #B7DAB9;
     font-size: 13px;
     font-weight: bold;
 }
+
+
 
 /*-------GLOBAL-------------------------------*/
 
@@ -67,6 +111,10 @@ ul{
     background-color: transparent;
     border: none;
     display: inline-block;
+}
+
+.title__deco{
+    color: $orange;
 }
 
 @mixin contentBlock{

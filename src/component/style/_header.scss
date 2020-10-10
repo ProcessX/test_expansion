@@ -1,7 +1,84 @@
 @import '_lib.scss';
 
+$bubbleSize: 310px;
+
 .intro{
     @include contentBlock;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    position: relative;
 
-    background-color: $green-light;
+    background-color: $green;
+
+    &:before{
+        content: "";
+        height: $bubbleSize;
+        width: $bubbleSize;
+        border-radius: 100%;
+        background-color: $orange;
+        position: absolute;
+        top: $bubbleSize / 4;
+        left: -$bubbleSize / 2;
+    }
+
+    > * {
+        position: relative;
+        z-index: 10;
+    }
+
+    @include for-size(tablet){
+        display: grid;
+        grid-template-columns: repeat(12,1fr);
+    }
+}
+
+.title--intro{
+    @include mark-68-bold;
+
+    margin-top: 0;
+    margin-bottom: 2em;
+    //line-height: 1em;
+
+    @include for-size(tablet){
+        background-image: url('/asset/img/headline.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: left center;
+
+        overflow: hidden;
+        text-indent: 100%;
+        white-space: nowrap;
+
+        grid-column: 2/13;
+    }
+}
+
+.intro__message{
+    @include mark-32-bold;
+
+    max-width: 400px;
+    margin-bottom: 105px;
+    margin-top: 0;
+
+    @include for-size(tablet){
+        grid-column: 2/13;
+    }
+}
+
+@include for-size(desktop){
+
+    .intro{
+        &:before{
+            left: $paddingDesktop;
+            top: $bubbleSize / 2.5;
+        }
+    }
+
+    .title--intro{
+        grid-column: 3/13;
+    }
+
+    .intro__message{
+        grid-column: 3/13;
+    }
 }

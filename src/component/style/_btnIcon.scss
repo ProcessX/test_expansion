@@ -1,1 +1,85 @@
 @import '_lib.scss';
+
+$iconSize: 50px;
+$iconAnimDuration: 0.2s;
+$iconShadow: 2px 6px 22px 0px rgba(0,0,0,0.4);
+
+.btnIcon{
+    @include mark-16-bold;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &:before{
+        content: "Icon";
+        display: block;
+        height: $iconSize;
+        width: $iconSize;
+        border-radius: 100%;
+        background-color: red;
+        margin-right: 1em;
+        overflow: hidden;
+        text-indent: 100%;
+        transition:
+            box-shadow $iconAnimDuration,
+            transform $iconAnimDuration,
+            background-color $iconAnimDuration;
+
+    }
+
+    &:after{
+        content: "Icon";
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        height: $iconSize;
+        width: $iconSize;
+        border-radius: 100%;
+        pointer-events: none;
+        margin-right: 1em;
+        overflow: hidden;
+        text-indent: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        transform-origin: center;
+        transition:
+            transform $iconAnimDuration,
+            filter 0.5s;
+
+    }
+
+    &:hover{
+        &:before{
+            transform: scale(120%);
+            -webkit-box-shadow: $iconShadow;
+            -moz-box-shadow: $iconShadow;
+            box-shadow: $iconShadow;
+        }
+
+        &:after{
+            transform: scale(130%);
+        }
+    }
+}
+
+.btnIcon--search{
+    &:before{
+        background-color: $yellow;
+    }
+
+    &:after{
+        background-image: url('/asset/icon/search.svg');
+    }
+
+
+    &:hover{
+        &:before{
+            background-color: $turquoise;
+        }
+
+        &:after{
+            filter: invert(100);
+        }
+    }
+}

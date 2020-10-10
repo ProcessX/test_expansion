@@ -1,6 +1,9 @@
 <script>
     // your script goes here
     export let title;
+    export let type;
+
+    
 </script>
 
 <style lang="scss">
@@ -9,4 +12,4 @@
 </style>
 
 <!-- markup (zero or more items) goes here -->
-<button class="btn btnIcon">{title}</button>
+<button class="btn btnIcon {type ? `btnIcon--${type}` : ""}">{title}</button>

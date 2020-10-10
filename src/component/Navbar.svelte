@@ -21,7 +21,7 @@
 </style>
 
 <!-- markup (zero or more items) goes here -->
-<nav class="navbar">
+<nav class="navbar {menuOpen ? "navbar--menuOpen" : ""}">
     <a href="#" class="navbar__link navbar__link--logo">Logo</a>
     <button class="btn navbar__burger" on:click={toggleMenu}>Burger</button>
 
@@ -33,11 +33,11 @@
             <li class="navbar__link__el">
                 <a href="#" class="navbar__link">Se connecter</a>
             </li>
-            <li class="navbar__link__el">
-                <a href="#" class="navbar__link navbar__link--bold">Je trouve</a>
+            <li class="navbar__link__el navbar__link__el--bold">
+                <a href="#" class="navbar__link">Je trouve</a>
             </li>
-            <li class="navbar__link__el">
-                <a href="#" class="navbar__link navbar__link--bold">Je suis</a>
+            <li class="navbar__link__el navbar__link__el--bold">
+                <a href="#" class="navbar__link">Je suis</a>
             </li>
         </ul>
 
