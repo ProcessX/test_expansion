@@ -58,6 +58,10 @@ $bubbleSize: 310px;
 
         grid-column: 2/13;
     }
+
+    @include for-size(desktop){
+        grid-column: 3/13;
+    }
 }
 
 .intro__message{
@@ -70,24 +74,9 @@ $bubbleSize: 310px;
     @include for-size(tablet){
         grid-column: 2/13;
     }
-}
 
-@include for-size(desktop){
-
-    /*
-    .intro{
-        &:before{
-            left: $paddingDesktop;
-            top: $bubbleSize / 2.5;
-        }
-    }
-    */
-
-    .title--intro{
-        grid-column: 3/13;
-    }
-
-    .intro__message{
+    @include for-size(desktop){
         grid-column: 3/13;
     }
 }
+
