@@ -2,7 +2,7 @@
     // your script goes here
     import { onMount } from 'svelte';
     const distanceMin = 100;
-    const displacementStrength = [20, 10, 6];
+    const displacementStrength = [28, 14, 8];
 
     let mouse = {x: 0, y: 0};
     let distanceFromMouse = {x: 0, y: 0};
