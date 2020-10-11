@@ -31,7 +31,7 @@
     }
     
     function mouseEnter(){
-        if(!open){
+        if(!block.classList.contains('dropdown--open')){
             magnetize = true;
             console.log('mouse enter');
             blockDimension = block.getBoundingClientRect();
@@ -86,7 +86,7 @@
 </style>
 
 <!-- markup (zero or more items) goes here -->
-<div class="dropdown" bind:this={block} on:mousemove={moveBlock} on:mouseenter={mouseEnter} on:mouseleave={mouseLeave}>
+<div class="dropdown {open ? "dropdown--open" : ""}" bind:this={block} on:mousemove={moveBlock} on:mouseenter={mouseEnter} on:mouseleave={mouseLeave}>
     <button bind:this={btn} on:click={toggleOpen} class="btn dropdown__btn {open ? "dropdown__btn--open" : ""}">{title}</button>
     <ul class="dropdown__link__li {open ? "dropdown__link__li--open" : ""}">
         {#each links as link}

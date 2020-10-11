@@ -3,6 +3,7 @@
     import Dropdown from './Dropdown.svelte';
 
     let menuOpen = false;
+    let page;
 
     let dropdownLinks_placeholder = [
         {title: "link01",href: "#"},
@@ -12,6 +13,12 @@
 
     function toggleMenu(){
         menuOpen = !menuOpen;
+        if(!page){
+            page = document.getElementsByClassName('page')[0];
+        }
+        console.log(page);
+        //page.classList.toggle('page--stop');
+        document.body.classList.toggle('lockScroll');
     }
 </script>
 
@@ -23,7 +30,7 @@
 <!-- markup (zero or more items) goes here -->
 <nav class="navbar {menuOpen ? "navbar--menuOpen" : ""}">
     <a href="#" class="navbar__link navbar__link--logo">Logo</a>
-    <button class="btn navbar__burger" on:click={toggleMenu}>Burger</button>
+    <button class="btn navbar__burger {menuOpen ? "navbar__burger--menuOpen" : ""}" on:click={toggleMenu}>Burger</button>
 
     <div class="navbar__menu {menuOpen ? "navbar__menu--open" : ""}">
         <ul class="navbar__link__li">

@@ -3,6 +3,11 @@
 $linkIconSize: 32px;
 $logoSize: 39px;
 $burgerSize: 32px;
+$burgerHeight: 20px;
+$burgerWidth: 39px;
+$burgerSize: max($burgerHeight, $burgerWidth);
+$burgerLineThickness: 3px;
+$burgerAnimDuration: 0.4s;
 $menuAnimDuration: 0.8s;
 $menuCircleTop: ($logoSize / 2) + 10px;
 $menuCircleLeftMobile: calc(100% - #{$paddingMobile} - (#{$burgerSize} / 2));
@@ -76,7 +81,41 @@ $menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
     overflow: hidden;
     text-indent: 100%;
     //background-color: red;
-    border: solid 1px black;
+    //border: solid 1px black;
+    position: relative;
+
+    &:before,&:after{
+        content: "";
+        height: $burgerLineThickness;
+        width: 100%;
+        background-color: black;
+        position: absolute;
+        right: 0;
+        transform-origin: center;
+        border-radius: $burgerLineThickness;
+    }
+
+    &:before{
+        top: ($burgerSize - $burgerHeight)/2;
+    }
+
+    &:after{
+        bottom: ($burgerSize - $burgerHeight)/2;
+        width: 0.6 * $burgerWidth;
+    }
+
+    &--menuOpen{
+        &:before{
+            top: calc(50% - #{$burgerLineThickness / 2});
+            transform: rotate(45deg);
+        }
+
+        &:after{
+            bottom: calc(50% - #{$burgerLineThickness / 2});
+            transform: rotate(-45deg);
+            width: 100%;
+        }
+    }
 }
 
 .navbar__menu{
@@ -155,10 +194,11 @@ $menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
         //transform: translateY(-100%);
         background-color: $yellow;
         width: 100%;
+        max-width: 100vw;
         height: 100vh;
         max-height: 100vh;
         box-sizing: border-box;
-        //overflow: scroll;
+        overflow: hidden;
         transition: clip-path $menuAnimDuration;
         z-index: 10;
         pointer-events: none;
@@ -169,6 +209,7 @@ $menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
             display: block;
             //visibility: visible;
             clip-path: circle(200% at 0 0);
+            overflow-y: scroll;
         }
     }
 

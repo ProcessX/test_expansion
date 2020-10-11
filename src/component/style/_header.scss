@@ -30,6 +30,13 @@ $bubbleSize: 310px;
         display: grid;
         grid-template-columns: repeat(12,1fr);
     }
+
+    @include for-size(desktop){
+        &:before{
+            left: $paddingDesktop;
+            top: $bubbleSize / 2.5;
+        }
+    }
 }
 
 .title--intro{
@@ -67,12 +74,14 @@ $bubbleSize: 310px;
 
 @include for-size(desktop){
 
+    /*
     .intro{
         &:before{
             left: $paddingDesktop;
             top: $bubbleSize / 2.5;
         }
     }
+    */
 
     .title--intro{
         grid-column: 3/13;
