@@ -272,6 +272,11 @@ $menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
 
         .navbar__link{
             color: black;
+            transition: color 0.3s;
+
+            &:hover{
+                color: $turquoise;
+            }
         }
 
         &:nth-child(2){
@@ -282,6 +287,7 @@ $menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
             @include aileron-13-bold;
         }
     }
+
 
     .dropdown__li{
         grid-column: 3/9;
