@@ -2,7 +2,7 @@
 
 $linkIconSize: 32px;
 $logoSize: 39px;
-$menuAnimDuration: 1.4s;
+$menuAnimDuration: 1s;
 $menuCircleTop: ($logoSize / 2) + 10px;
 
 @mixin menuCirclePos{
@@ -59,7 +59,7 @@ $menuCircleTop: ($logoSize / 2) + 10px;
         width: $logoSize;
         overflow: hidden;
         text-indent: 100%;
-        background-image: url('/asset/img/logo-binche.png');
+        background-image: url('../asset/img/logo-binche.png');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;

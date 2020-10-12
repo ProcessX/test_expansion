@@ -47,7 +47,7 @@ $bubbleSize: 310px;
     //line-height: 1em;
 
     @include for-size(tablet){
-        background-image: url('/asset/img/headline.svg');
+        background-image: url('../asset/img/headline.svg');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: left center;

@@ -35,8 +35,8 @@ $btnTransition:
         width: 0.5em;
         margin-left: 0.5em;
         background-color: $red;
-        -webkit-mask-image: url("/asset/icon/down-arrow.svg");
-        mask-image: url("/asset/icon/down-arrow.svg");
+        -webkit-mask-image: url("../asset/icon/down-arrow.svg");
+        mask-image: url("../asset/icon/down-arrow.svg");
         mask-size: contain;
         -webkit-mask-size: contain;
         transform-origin: center;
@@ -127,8 +127,8 @@ $btnTransition:
             display: inline-block;
             margin-left: 0.5em;
             background-color: $red;
-            -webkit-mask-image: url("/asset/icon/down-arrow.svg");
-            mask-image: url("/asset/icon/down-arrow.svg");
+            -webkit-mask-image: url("../asset/icon/down-arrow.svg");
+            mask-image: url("../asset/icon/down-arrow.svg");
             -webkit-mask-size: contain;
             mask-size: contain;
             transform-origin: center;
@@ -153,8 +153,8 @@ $btnTransition:
                 display: inline-block;
                 margin-left: 0.5em;
                 background-color: $red;
-                -webkit-mask-image: url("/asset/icon/down-arrow.svg");
-                mask-image: url("/asset/icon/down-arrow.svg");
+                -webkit-mask-image: url("../asset/icon/down-arrow.svg");
+                mask-image: url("../asset/icon/down-arrow.svg");
                 mask-size: contain;
                 -webkit-mask-size: contain;
                 transform-origin: center;

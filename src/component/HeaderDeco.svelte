@@ -59,7 +59,7 @@
 
 <!-- markup (zero or more items) goes here -->
 <div class="header__deco needMouse" bind:this={block}>
-    <img src="/asset/img/party01.png" class="bubbleImg bubbleImg--main" alt="party01" bind:this={bubble1}/>
-    <img src="/asset/img/party02.png" class="bubbleImg bubbleImg--secondary" alt="party02" bind:this={bubble2}/>
+    <img src="asset/img/party01.png" class="bubbleImg bubbleImg--main" alt="party01" bind:this={bubble1}/>
+    <img src="asset/img/party02.png" class="bubbleImg bubbleImg--secondary" alt="party02" bind:this={bubble2}/>
     <span class="bubble" bind:this={bubble3}>Bubble</span>
 </div>
