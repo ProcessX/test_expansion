@@ -1,5 +1,9 @@
 @import '_lib.scss';
 
+@mixin animatedBubble{
+    transition: transform 0.8s ease-out;
+}
+
 .header__deco{
     width: 100%;
     max-width: 300px;
@@ -22,10 +26,13 @@
     position: absolute;
     right: -5%;
     top: 55%;
+    @include animatedBubble;
 }
 
 .bubbleImg{
     max-width: 100%;
+    
+    @include animatedBubble;
 
     &--secondary{
         max-width: 33%;

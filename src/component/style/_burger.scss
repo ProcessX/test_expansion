@@ -1,0 +1,83 @@
+@import '_lib.scss';
+
+$burgerSize: 32px;
+$burgerHeight: 20px;
+$burgerWidth: 39px;
+$burgerSize: max($burgerHeight, $burgerWidth);
+$burgerLineThickness: 3px;
+$burgerAnimDuration: 0.4s;
+
+$burgerTransition-top-close:
+    transform 0.4s 0.4s,
+    top 0.4s 0s;
+$burgerTransition-top-open:
+    transform 0.4s 0s,
+    top 0.4s 0.4s;
+$burgerTransition-bottom-close:
+    transform 0.4s 0.4s,
+    bottom 0.4s 0s,
+    width 0.4s 0.4s;
+$burgerTransition-bottom-open:
+    transform 0.4s 0s,
+    bottom 0.4s 0.4s,
+    width 0.4s 0s;    
+
+.burger{
+    grid-column: 2/3;
+    justify-self: end;
+    z-index: 100;
+    height: $burgerSize;
+    width: $burgerSize;
+    max-height: $burgerSize;
+    max-width: $burgerSize;
+    overflow: hidden;
+    text-indent: 100%;
+    position: relative;
+
+    &:before,&:after{
+        content: "";
+        height: $burgerLineThickness;
+        width: 100%;
+        background-color: black;
+        position: absolute;
+        right: 0;
+        transform-origin: center;
+        border-radius: $burgerLineThickness;
+    }
+
+    &:before{
+        top: ($burgerSize - $burgerHeight)/2;
+        transition: $burgerTransition-top-open;
+    }
+
+    &:after{
+        bottom: ($burgerSize - $burgerHeight)/2;
+        width: 0.6 * $burgerWidth;
+        transition: $burgerTransition-bottom-open;
+    }
+
+    &--open{
+        &:before{
+            top: calc(50% - #{$burgerLineThickness / 2});
+            transform: rotate(45deg);
+            transition: $burgerTransition-top-close;
+        }
+
+        &:after{
+            bottom: calc(50% - #{$burgerLineThickness / 2});
+            transform: rotate(-45deg);
+            width: 100%;
+            transition: $burgerTransition-bottom-close;
+        }
+    }
+
+    &:hover{
+        &:after{
+            width: 100%;
+        }
+    }
+
+    @include for-size(desktop-large){
+        display: none;
+    }
+}

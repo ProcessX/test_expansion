@@ -2,26 +2,30 @@
 
 $linkIconSize: 32px;
 $logoSize: 39px;
-$burgerSize: 32px;
-$burgerHeight: 20px;
-$burgerWidth: 39px;
-$burgerSize: max($burgerHeight, $burgerWidth);
-$burgerLineThickness: 3px;
-$burgerAnimDuration: 0.4s;
-$menuAnimDuration: 0.8s;
+$menuAnimDuration: 1.4s;
 $menuCircleTop: ($logoSize / 2) + 10px;
-$menuCircleLeftMobile: calc(100% - #{$paddingMobile} - (#{$burgerSize} / 2));
-$menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
 
 @mixin menuCirclePos{
-    clip-path: circle(0% at calc(100% - #{$paddingMobile} - (#{$burgerSize} / 2)) $menuCircleTop);
+    clip-path: circle(0% at calc(100% - #{$paddingMobile} - (#{$logoSize} / 2)) $menuCircleTop);
 
     @include for-size(tablet){
-        clip-path: circle(0% at calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2)) $menuCircleTop);
+        clip-path: circle(0% at calc(100% - #{$paddingTablet} - (#{$logoSize} / 2)) $menuCircleTop);
     }
 
     @include for-size(desktop){
-        clip-path: circle(0% at calc(100% - #{$paddingDesktop} - (#{$burgerSize} / 2)) $menuCircleTop);
+        clip-path: circle(0% at calc(100% - #{$paddingDesktop} - (#{$logoSize} / 2)) $menuCircleTop);
+    }
+}
+
+@mixin menuCirclePosOpen{
+    clip-path: circle(140% at calc(100% - #{$paddingMobile} - (#{$logoSize} / 2)) $menuCircleTop);
+
+    @include for-size(tablet){
+        clip-path: circle(140% at calc(100% - #{$paddingTablet} - (#{$logoSize} / 2)) $menuCircleTop);
+    }
+
+    @include for-size(desktop){
+        clip-path: circle(140% at calc(100% - #{$paddingDesktop} - (#{$logoSize} / 2)) $menuCircleTop);
     }
 }
 
@@ -70,60 +74,11 @@ $menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
     }
 }
 
-.navbar__burger{
-    grid-column: 2/3;
-    justify-self: end;
-    z-index: 100;
-    height: $burgerSize;
-    width: $burgerSize;
-    max-height: $burgerSize;
-    max-width: $burgerSize;
-    overflow: hidden;
-    text-indent: 100%;
-    //background-color: red;
-    //border: solid 1px black;
-    position: relative;
-
-    &:before,&:after{
-        content: "";
-        height: $burgerLineThickness;
-        width: 100%;
-        background-color: black;
-        position: absolute;
-        right: 0;
-        transform-origin: center;
-        border-radius: $burgerLineThickness;
-    }
-
-    &:before{
-        top: ($burgerSize - $burgerHeight)/2;
-    }
-
-    &:after{
-        bottom: ($burgerSize - $burgerHeight)/2;
-        width: 0.6 * $burgerWidth;
-    }
-
-    &--menuOpen{
-        &:before{
-            top: calc(50% - #{$burgerLineThickness / 2});
-            transform: rotate(45deg);
-        }
-
-        &:after{
-            bottom: calc(50% - #{$burgerLineThickness / 2});
-            transform: rotate(-45deg);
-            width: 100%;
-        }
-    }
-}
-
 .navbar__menu{
     @include menuCirclePos;
 }
 
 @include for-size(smallerThanTablet){
-    //@include contentBlock;
     .navbar__menu{
         @include contentBlock;
     }
@@ -140,58 +95,11 @@ $menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
 
 
 @include for-size(smallerThanDesktopLarge){
-    .navbar{
-        &:after{
-            content: "";
-            //display: block;
-            display: none;
-            height: 100vh;
-            width: 100vw;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: $yellow;
-            pointer-events: none;
-            transition: opacity $menuAnimDuration;
-            clip-path: circle(0%);
-
-        }
-
-        &:before{
-            content: "";
-            //display: block;
-            display: none;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: inherit;
-            z-index: 50;
-            transition: box-shadow $menuAnimDuration;
-        }
-
-        &--menuOpen{
-            &:before{
-                -webkit-box-shadow: 0px -8px 26px 7px rgba(0,0,0,0.40);
-                -moz-box-shadow: 0px -8px 26px 7px rgba(0,0,0,0.40);
-                box-shadow: 0px -8px 26px 7px rgba(0,0,0,0.40);
-            }
-
-            &:after{
-                clip-path: circle(40%);
-            }
-        }
-    }
 
     .navbar__menu{
-        //@include contentBlock;
-
         padding-top: 98px;
-        //padding-bottom: $paddingTablet;
         position: absolute;
         top: 0;
-        //transform: translateY(-100%);
         background-color: $yellow;
         width: 100%;
         max-width: 100vw;
@@ -200,15 +108,14 @@ $menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
         box-sizing: border-box;
         overflow: hidden;
         transition: clip-path $menuAnimDuration;
+        transition-timing-function: cubic-bezier(0.28, 0.47, 0.89, 0.80);
         z-index: 10;
         pointer-events: none;
     
         &--open{
-            //transform: translateY(0);
             pointer-events: all;
             display: block;
-            //visibility: visible;
-            clip-path: circle(200% at 0 0);
+            @include menuCirclePosOpen;
             overflow-y: scroll;
         }
     }
@@ -253,27 +160,9 @@ $menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
             display: flex;
             align-items: center;
             justify-content: flex-start;
-
-            &:before{
-                content: '';
-                display: inline-block;
-                height: $linkIconSize;
-                width: $linkIconSize;
-                background-color: gray;
-                margin-right: 1em;
-            }
         }
     }
 
-    .dropdown__li{
-        padding-top: 1em;
-        //padding-left: $linkIconSize + 18px;
-    }
-
-    .dropdown__el{
-        padding: 1em 0 0 0;
-        
-    }
 }
 
 
@@ -282,10 +171,6 @@ $menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
         grid-template-columns: 1fr 11fr;
         padding-top: $paddingMobile;
         padding-bottom: $paddingMobile;
-    }
-
-    .navbar__burger{
-        display: none;
     }
 
     .navbar__menu{
@@ -326,22 +211,6 @@ $menuCircleLeftTablet: calc(100% - #{$paddingTablet} - (#{$burgerSize} / 2));
 
         &--bold{
             @include aileron-13-bold;
-        }
-    }
-
-
-    .dropdown__li{
-        grid-column: 3/9;
-        grid-row: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .dropdown__el{
-        margin-right: 1em;
-        &:last-child{
-            margin: 0;
         }
     }
 }

@@ -1,0 +1,36 @@
+@import '_lib.scss';
+
+.dropdown__li{
+    pointer-events: none;
+
+    > *{
+        pointer-events: all;
+    }
+
+    @include for-size(smallerThanDesktopLarge){
+        padding-top: 1em;
+    }
+
+    @include for-size(desktop-large){
+        grid-column: 3/9;
+        grid-row: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.dropdown__el{
+    @include for-size(smallerThanDesktopLarge){
+        padding: 1em 0 0 0;
+        max-width: 50%;
+        margin: auto;
+    }
+    
+    @include for-size(desktop-large){
+        margin-right: 1em;
+        &:last-child{
+            margin: 0;
+        }
+    }
+}

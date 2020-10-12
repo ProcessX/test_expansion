@@ -1,6 +1,7 @@
 <script>
     // your script goes here
-    import Dropdown from './Dropdown.svelte';
+    import Burger from './Burger.svelte';
+    import DropdownList from './DropdownList.svelte';
 
     let menuOpen = false;
     let page;
@@ -11,26 +12,42 @@
         {title: "link03",href: "#"},
     ];
 
+    let dropdowns = [
+        {
+            title: "Ma ville",
+            links: dropdownLinks_placeholder,
+        },
+        {
+            title: "Vivre à Binche",
+            links: dropdownLinks_placeholder,
+        },
+        {
+            title: "Que faire à Binche",
+            links: dropdownLinks_placeholder,
+        },
+    ]
+
     function toggleMenu(){
         menuOpen = !menuOpen;
         if(!page){
             page = document.getElementsByClassName('page')[0];
         }
-        console.log(page);
-        //page.classList.toggle('page--stop');
         document.body.classList.toggle('lockScroll');
     }
+
 </script>
 
 <style lang="scss">
     @import './style/_navbar.scss';
     /* your styles go here */
+
 </style>
 
 <!-- markup (zero or more items) goes here -->
 <nav class="navbar {menuOpen ? "navbar--menuOpen" : ""}">
     <a href="#" class="navbar__link navbar__link--logo">Logo</a>
-    <button class="btn navbar__burger {menuOpen ? "navbar__burger--menuOpen" : ""}" on:click={toggleMenu}>Burger</button>
+
+    <Burger onclick={toggleMenu}/>
 
     <div class="navbar__menu {menuOpen ? "navbar__menu--open" : ""}">
         <ul class="navbar__link__li">
@@ -48,16 +65,7 @@
             </li>
         </ul>
 
-        <ul class="dropdown__li">
-            <li class="dropdown__el">
-                <Dropdown title={"Ma ville"} links={dropdownLinks_placeholder}/>
-            </li>
-            <li class="dropdown__el">
-                <Dropdown title={"Vivre à Binche"} links={dropdownLinks_placeholder}/>
-            </li>
-            <li class="dropdown__el">
-                <Dropdown title={"Que faire à Binche"} links={dropdownLinks_placeholder}/>
-            </li>
-        </ul>
+        <DropdownList dropdowns={dropdowns}/>
+
     </div>
 </nav>

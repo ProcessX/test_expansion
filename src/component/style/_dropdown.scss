@@ -38,6 +38,7 @@ $btnTransition:
         -webkit-mask-image: url("/asset/icon/down-arrow.svg");
         mask-image: url("/asset/icon/down-arrow.svg");
         mask-size: contain;
+        -webkit-mask-size: contain;
         transform-origin: center;
         transition: transform $btnAnim;
     }
@@ -69,7 +70,6 @@ $btnTransition:
         }
 
         &--open{
-            transform: scale(150%);
             background-color: $yellow;
             -webkit-box-shadow: $btnShadow;
             -moz-box-shadow: $btnShadow;
@@ -129,6 +129,7 @@ $btnTransition:
             background-color: $red;
             -webkit-mask-image: url("/asset/icon/down-arrow.svg");
             mask-image: url("/asset/icon/down-arrow.svg");
+            -webkit-mask-size: contain;
             mask-size: contain;
             transform-origin: center;
             transform: rotateZ(-90deg);
@@ -155,6 +156,7 @@ $btnTransition:
                 -webkit-mask-image: url("/asset/icon/down-arrow.svg");
                 mask-image: url("/asset/icon/down-arrow.svg");
                 mask-size: contain;
+                -webkit-mask-size: contain;
                 transform-origin: center;
                 transform: rotateZ(-90deg);
             }
